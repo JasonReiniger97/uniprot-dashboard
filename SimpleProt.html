@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <title>Embedded UniProt Entry</title>
+     <style>
+       body, html {
+         margin: 0;
+         padding: 0;
+         height: 100%;
+         overflow: hidden;
+       }
+       iframe {
+         width: 100%;
+         height: 100%;
+         border: none;
+       }
+     </style>
+   </head>
+   <body>
+     <iframe src="" id="uniprotFrame"></iframe>
+     <script>
+       window.onload = function() {
+         var params = new URLSearchParams(window.location.search);
+         var accession = params.get('accession');
+         if (accession) {
+           document.getElementById('uniprotFrame').src = `https://www.uniprot.org/uniprotkb/${accession}`;
+         }
+       }
+     </script>
+   </body>
+   </html>
